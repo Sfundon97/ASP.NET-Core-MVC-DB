@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "About CUT";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+   <style>
+        /* About Us section */
+        .about-cut {
+            display: flex;
+            flex-wrap: wrap; /* Allow content to wrap if needed on smaller screens */
+            padding: 50px 0;
+            margin: auto; /* Center the section horizontally */
+            max-width: 1000px; /* Set a maximum width for responsiveness */
+        }
+
+        .cut-description {
+            flex: 1 1 60%; /* Allocate remaining space for description */
+        }
+
+            .cut-description h1 {
+                margin-bottom: 20px;
+                font-size: 1.5em; /* Adjust heading size */
+            }
+
+            .cut-description p {
+                line-height: 1.5; /* Improve readability with line spacing */
+                margin-bottom: 15px;
+            }
+
+        .float-image {
+            float: left; /* Or right to position on the right */
+            margin: 15px 20px 15px 0; /* Adjust margins as needed */
+            /* Additional styles for image (optional) */
+             
+        }
+
+        body {
+            background-color: #f5f5f5; /* Light gray color */
+        }
+
+   </style>
+</head>
+<body>
+    
+    <div class="about-cut">
+        <div class="cut-description">
+            <h1>About Central University of Technology</h1>
+            <div class="float-image">
+                <img src="~/images/logo.jpg" alt="Alternate Text" style="width: 400px; height: 350px;" />
+            </div>
+            <p>
+                The Central University of Technology, Free State (CUT) is a leading South African university focused on technological advancement. Established in 1981, CUT has grown into a respected institution offering a diverse range of qualifications in science, engineering, technology, humanities, and education.
+            </p>
+            <p>
+                The university (then still known as the “Technikon Free State”) opened its doors in 1981, with 285 students enrolled in mainly secretarial, art and design programmes.  Today, the institution boasts more than 21 000 students who have decided to make CUT their academic partner in earning a qualification and gaining appropriate work-integrated learning to equip and prepare them for professional practice. With the restructuring of the higher education landscape in 2004, CUT embraced its new status as a university of technology (UoT), positioning itself to succeed as such.   The qualifications on offer reside in four faculties, namely Faculty of Health and Environmental Sciences; Faculty of Humanities; Faculty of Engineering, Built Environment and Information Technology (IT); and Faculty of Management Sciences.  The university offers certificates and diplomas at undergraduate level, as well as advanced diplomas, postgraduate diplomas at honours level, and master’s and doctoral degrees in order to increase the production of world-class postgraduate programmes and high-quality outputs for research.
+
+                CUT’s vision is to be “a leading African University of Technology, shaping the future through innovation.”
+
+                The notion of CUT as a leading African University of Technology should be seen against the background of the University’s aspiration to be socially relevant and to have a positive impact on the socio-economic conditions of the community it serves. To be a leading African UoT is to recognise the location of the University geographically but also, more importantly, to recognise its location within the matrix of social and economic challenges that the continent faces. It talks to indigenous knowledge, a de-colonised curriculum, and distinctively
+
+                African values such as ubuntu. The future orientation of the vision statement – by 2030 – requires the University to project itself 10 years into the future, in an uncertain and rapidly changing world. “Shaping the future through innovation” speaks to CUT’s aspiration to be an active force for change, finding novel and innovative solutions to the problems that the country and the continent face.
+                Situated in the heart of South Africa, in the Bloemfontein and Welkom campuses, CUT fosters a vibrant learning environment that equips students with the knowledge and skills necessary to thrive in the ever-evolving global landscape.
+            </p>
+            <p>
+                CUT's commitment to research and innovation positions it at the forefront of technological development. The university boasts a network of research centers dedicated to addressing real-world challenges and pushing the boundaries of knowledge.
+                Beyond academics, CUT cultivates a dynamic student life. The university provides a supportive environment with various clubs, organizations, and sporting activities, encouraging a well-rounded student experience.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
