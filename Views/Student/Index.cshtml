@@ -3,9 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<style>
+    body{
+        margin-bottom: 150px;
+    }
+</style>
 <h1>Index</h1>
 
+<body>
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
@@ -66,7 +71,6 @@
                 @Html.DisplayFor(modelitem => item.Email)
             </td>
             <td>
-                
                 <a asp-action="Details" asp-route-id="@item.StudentNumber">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.StudentNumber">Delete</a>
             </td>
@@ -94,3 +98,4 @@
    class="btn btn-default @nextDisabled">
     Next
 </a>
+</body>

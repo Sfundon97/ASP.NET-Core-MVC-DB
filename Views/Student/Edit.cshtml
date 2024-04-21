@@ -3,11 +3,17 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<style>
+    body {
+        margin-bottom: 80px; 
+    }
 
+</style>
 <h1>Edit</h1>
 
 <h4>Student</h4>
 <hr />
+<body>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit"  enctype="multipart/form-data">
@@ -62,8 +68,9 @@
 </div>
 
 <div>
-    <a asp-action="Details">Back to List</a>
+    <a asp-action="Details">Back to Details</a>
 </div>
+</body>
 
 @section Scripts {
     @{

@@ -65,20 +65,26 @@ namespace ASPNETCore_DB.Controllers
         }
         public IActionResult Details(string id)
         {
-
             if (string.IsNullOrEmpty(id))
             {
                 var student = _studentRepo.ByEmail(this.User.Identity.Name.ToString());
-                return View(student);
+                if (student != null)
+                {
+                    return View(student);
+                }
             }
-
             else
             {
                 var student = _studentRepo.Details(id);
-                return View(student);
+
+                    return View(student);
+                
             }
 
+            // If the student is not found or if id is null, redirect to the "NotEnrolled" view
+            return View("NotEnrolled");
         }
+
 
         [Authorize(Roles = "Student")]
         [HttpGet]
