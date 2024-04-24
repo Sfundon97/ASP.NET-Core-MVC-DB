@@ -1,3 +1,7 @@
+// Programmer name: S Nondwatyu
+// Student nr: 220036624
+// Assignment nr: GA1
+// Purpose: Configure the ASP.NET Core application's services
 using ASPNETCore_DB.Data;
 using ASPNETCore_DB.Interfaces;
 using ASPNETCore_DB.Models;

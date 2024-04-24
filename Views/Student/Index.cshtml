@@ -1,17 +1,136 @@
-﻿@model PaginatedList<ASPNETCore_DB.Models.Student>
+﻿<!--
+    Programmer name: S Nondwatyu
+    Student nr: 220036624
+    Assignment nr: GA1
+    Purpose: This Razor view represents the "Index" page, displaying a list of student records.
+             It includes a search form to filter students by student number, and a table displaying student information,
+             including student number, first name, surname, enrollment date, photo, and email.
+             Users can navigate through the paginated list and view details or delete specific student records.
+-->
+@model PaginatedList<ASPNETCore_DB.Models.Student>
 
 @{
     ViewData["Title"] = "Index";
 }
+<!-- CSS styles for the page layout and elements -->
 <style>
-    body{
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        padding-top: 20px;
         margin-bottom: 150px;
     }
+
+    
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    input[type="submit"], .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        input[type="submit"]:hover, .btn:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: gray;
+            color: #fff;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+    .pagination {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+        .pagination .btn {
+            margin-right: 5px;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+            .pagination .btn:hover {
+                background-color: #0056b3;
+            }
+
+            .pagination .btn.disabled {
+                background-color: #dee2e6;
+                cursor: not-allowed;
+            }
+
+                .pagination .btn.disabled:hover {
+                    background-color: #dee2e6;
+                }
+
+            .pagination .btn.active {
+                background-color: #0056b3;
+            }
+
+    img.student-photo {
+        border-radius: 50%;
+       
+        max-width: 100px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
 </style>
+
+
 <h1>Index</h1>
 
 <body>
-
+    <!-- The form for searching for a student using student number -->
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -21,24 +140,24 @@
         </p>
     </div>
 </form>
-
+<!--Student data table-->
 <table class="table">
     <thead>
         <tr>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["StudentNumberSortParm"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">Student Number</a>
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]" style="color: #fff;">Student Number</a>
             </th>
             <th>
                 First Name
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">Surname</a>
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]" style="color: #fff; text-decoration:none;" >Surname</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">Enrollment Date</a>
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]" style="color: #fff;">Enrollment Date</a>
             </th>
             <th>
                 Photo

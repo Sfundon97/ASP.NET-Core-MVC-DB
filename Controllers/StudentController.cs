@@ -1,4 +1,11 @@
-﻿using ASPNETCore_DB.Interfaces;
+﻿// Programmer name : S Nondwatyu
+// Student nr : 220036624
+// Assignment nr : GA1
+// Purpose : The purpose of this StudentController is to provide basic functionality
+// for rendering views and CRUD operations.
+
+
+using ASPNETCore_DB.Interfaces;
 using ASPNETCore_DB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +21,14 @@ namespace ASPNETCore_DB.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         public StudentController(IStudent studentRepo, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
         {
+            // Name:   StudentController
+            // Method Parameters :
+            //   IStudent studentRepo
+            //     - Interface for student repository
+            //   IHttpContextAccessor httpContextAccessor
+            //     - Provides access to the HttpContext
+            //   IWebHostEnvironment webHostEnvironment
+            //     - Provides information about the web hosting environment
             try
             {
                 _studentRepo = studentRepo;
@@ -31,6 +46,13 @@ namespace ASPNETCore_DB.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
+            // Name : IActionResult Index
+            // Purpose : Renders the index view for student records
+            // Re-use : None
+            // Input Parameters : string sortOrder, string currentFilter, string searchString, int? pageNumber
+            //   - Sorting parameters, filter parameters, search string, and page number for pagination
+            // Output Type : IActionResult
+            //   - Returns the view result for the index view
             pageNumber = pageNumber ?? 1;
             int pageSize = 3;
 
@@ -62,9 +84,16 @@ namespace ASPNETCore_DB.Controllers
             }
                         
             return viewResult;
-        }
+        }//end method
         public IActionResult Details(string id)
         {
+            // Name    : IActionResult Details
+            // Purpose : Renders the details view for a specific student
+            // Re-use : None
+            // Method Parameters : string id
+            //   - ID of the student to display details for
+            // Output Type : IActionResult
+            //   - Returns the view result for the details view
             if (string.IsNullOrEmpty(id))
             {
                 var student = _studentRepo.ByEmail(this.User.Identity.Name.ToString());
@@ -83,13 +112,19 @@ namespace ASPNETCore_DB.Controllers
 
             // If the student is not found or if id is null, redirect to the "NotEnrolled" view
             return View("NotEnrolled");
-        }
+        }//end method
 
 
         [Authorize(Roles = "Student")]
         [HttpGet]
         public IActionResult Create()
         {
+            //Name : IActionResult Create
+            // Purpose : Renders the create view for adding a new student into the database
+            // Re-use : None
+            // Method Parameters : None
+            // Output Type : IActionResult
+            //   - Returns the view result for the create view
             var studentExist = _studentRepo.ByEmail(this.User.Identity.Name.ToString());    
 
              if (studentExist != null)
@@ -105,13 +140,20 @@ namespace ASPNETCore_DB.Controllers
             }
              
 
-        }
+        }//end method
 
         [Authorize(Roles = "Student")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Student student)
         {
+            //Name : IActionResult Create
+            // Purpose : Handles form submission to create a new student
+            // Re-use : None
+            // Method Parameters : Student student
+            //   - Student object containing information for the new student
+            // Output Type : IActionResult
+            //   - Returns the view result after processing the form submission
             var files = HttpContext.Request.Form.Files;
             string webRootPath = _webHostEnvironment.WebRootPath;
             string upload = webRootPath + WebConstants.ImagePath;
@@ -151,13 +193,20 @@ namespace ASPNETCore_DB.Controllers
             
 
             
-        }
+        }//end method
         
         
         [Authorize(Roles = "Student")]
         [HttpGet]
         public IActionResult Edit(string id)
         {
+            //Name : IActionResult Edit
+            // Purpose : Renders the edit view for modifying a student's details
+            // Re-use : None
+            // Method Parameters : string id
+            //   - ID of the student to edit
+            // Output Type : IActionResult
+            //   - Returns the view result for the edit view
             ViewResult viewDetail = View();
             try
             {
@@ -168,14 +217,21 @@ namespace ASPNETCore_DB.Controllers
                 throw new Exception("Student detail not found");
             }
             return viewDetail;
-        }
+        }//end method
 
         [Authorize(Roles = "Student")]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult Edit(Student student, string photoName)
         {
-           
+            //Name : IActionResult Edit
+            // Purpose : Handles form submission to modify a student's details
+            // Re-use : None
+            // Method Parameters : Student student, string photoName
+            //   - Student object containing modified details, and the name of the photo
+            // Output Type : IActionResult
+            //   - Returns the view result after processing the form submission
+
             if (HttpContext.Request.Form.Files.Count > 0)
             {
                 var files = HttpContext.Request.Form.Files;
@@ -216,12 +272,19 @@ namespace ASPNETCore_DB.Controllers
             }
             
             return RedirectToAction("Details");
-        }
+        }//end method
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(string id)
         {
+            //Name : IActionResult Delete
+            // Purpose : Renders the delete view for removing a student
+            // Re-use : None
+            // Method Parameters : string id
+            //   - ID of the student to delete
+            // Output Type : IActionResult
+            //   - Returns the view result for the delete view
             ViewResult viewDetail = View();
             try
             {
@@ -232,13 +295,21 @@ namespace ASPNETCore_DB.Controllers
                 throw new Exception("Student detail not found");
             }
             return viewDetail;
-        }
+        }//end method
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete([Bind("StudentNumber, FirstName, Surname, EnrollmentDate")] Student student)
         {
-            try 
+            //Name : IActionResult Delete
+            // Purpose : Handles form submission to remove a student from the database
+            // Re-use : None
+            // Method Parameters : Student student
+            //   - Student object containing details of the student to delete
+            // Output Type : IActionResult
+            //   - Returns the view result after processing the form submission
+            try
             {
                 _studentRepo.Delete(student);
             }
@@ -248,8 +319,8 @@ namespace ASPNETCore_DB.Controllers
             }
             
             return RedirectToAction(nameof(Index));
-        }
+        }//end method
 
 
-    }
-}
+    }//end controller
+}//end namespace

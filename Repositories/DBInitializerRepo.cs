@@ -1,4 +1,12 @@
-﻿using ASPNETCore_DB.Data;
+﻿// Programmer name: S Nondwatyu
+// Student nr: 220036624
+// Assignment nr: GA1
+// Purpose: Define a repository class, DBInitializerRepo, implementing the IDBInitializer interface,
+// responsible for initializing the database with default data in the database.
+// The Initialize method ensures database creation if it does not exist and seeds initial student data
+// if the Student table is empty.
+
+using ASPNETCore_DB.Data;
 using ASPNETCore_DB.Interfaces;
 using ASPNETCore_DB.Models;
 
@@ -29,6 +37,6 @@ namespace ASPNETCore_DB.Repositories
                 context.Students.Add(s);
             }
             context.SaveChanges();
-        }
-    }
-}
+        }//end method
+    }//end class
+}//end namespace

@@ -1,4 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// Programmer name : S Nondwatyu
+// Student nr : 220036624
+// Assignment nr : GA1
+// Purpose : The purpose of the Student class is to define the model representing student data
+// in an ASP.NET Core web application. It represents a student entity with properties such as StudentNumber,
+// FirstName, Surname, EnrollmentDate, Photo, and Email.
+
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace ASPNETCore_DB.Models
@@ -40,5 +47,5 @@ namespace ASPNETCore_DB.Models
         [Required(ErrorMessage = "Contact Mail")]
         public string? Email { get; set; }
 
-    }
-}
+    }//end class
+}//end namespace

@@ -1,4 +1,13 @@
-﻿@{
+﻿<!--
+    Programmer name: S Nondwatyu
+    Student nr: 220036624
+    Assignment nr: GA1
+    Purpose: This Razor view represents the About page for Central University of Technology (CUT).
+             It provides information about CUT's history, vision, academic offerings, research commitment, and student life.
+             The page includes a brief overview, key highlights, and descriptions of CUT's mission, values, and future aspirations.
+             
+-->
+@{
     ViewData["Title"] = "About CUT";
 }
 
@@ -8,8 +17,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    <!-- CSS styles for the page layout and elements -->
    <style>
-        /* About Us section */
         .about-cut {
             display: flex;
             flex-wrap: wrap; 
@@ -44,6 +53,7 @@
 
    </style>
 </head>
+<!--The about CUT Page-->
 <body>
     
     <div class="about-cut">
